@@ -22,6 +22,8 @@ public class ServiceApiInfo {
     public static class ApiMeta {
         /** 接口名 */
         private String name;
+        /** 接口中文名 */
+        private String nameCn;
         /** 请求path */
         private String path;
         /** 版本号 */

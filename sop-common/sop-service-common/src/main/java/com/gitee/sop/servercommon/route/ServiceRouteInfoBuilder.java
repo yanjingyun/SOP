@@ -61,6 +61,7 @@ public class ServiceRouteInfoBuilder {
         // 唯一id规则：接口名 + 版本号
         String routeId = apiMeta.fetchNameVersion();
         BeanUtils.copyProperties(apiMeta, routeDefinition);
+        routeDefinition.setNameCn(apiMeta.getNameCn());
         routeDefinition.setId(routeId);
         routeDefinition.setFilters(Collections.emptyList());
         routeDefinition.setPredicates(Collections.emptyList());

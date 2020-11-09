@@ -80,6 +80,7 @@ public class ApiMetaBuilder {
             apiMeta.setMergeResult(BooleanUtils.toInteger(open.mergeResult()));
             apiMeta.setPermission(BooleanUtils.toInteger(open.permission()));
             apiMeta.setNeedToken(BooleanUtils.toInteger(open.needToken()));
+            apiMeta.setNameCn(open.name());
         }
         return apiMeta;
     }

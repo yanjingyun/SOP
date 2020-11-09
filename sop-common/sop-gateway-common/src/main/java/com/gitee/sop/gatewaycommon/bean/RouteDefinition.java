@@ -21,6 +21,11 @@ public class RouteDefinition {
     private String name;
 
     /**
+     * 接口中文名
+     */
+    private String nameCn;
+
+    /**
      * 版本号
      */
     private String version;

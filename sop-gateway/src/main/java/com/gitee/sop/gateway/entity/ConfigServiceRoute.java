@@ -31,6 +31,9 @@ public class ConfigServiceRoute {
     /** 接口名, 数据库字段：name */
     private String name;
 
+    /** 接口中文名, 数据库字段：name_cn */
+    private String nameCn;
+
     /** 版本号, 数据库字段：version */
     private String version;
 

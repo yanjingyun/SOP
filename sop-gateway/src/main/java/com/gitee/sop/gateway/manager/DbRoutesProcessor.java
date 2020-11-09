@@ -50,6 +50,7 @@ public class DbRoutesProcessor implements RoutesProcessor {
                     ConfigServiceRoute configServiceRoute = new ConfigServiceRoute();
                     configServiceRoute.setId(routeDefinition.getId());
                     configServiceRoute.setName(routeDefinition.getName());
+                    configServiceRoute.setNameCn(routeDefinition.getNameCn());
                     configServiceRoute.setVersion(routeDefinition.getVersion());
                     configServiceRoute.setUri(routeDefinition.getUri());
                     configServiceRoute.setPath(routeDefinition.getPath());

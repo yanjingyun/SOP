@@ -20,6 +20,11 @@ public @interface Open {
     String value();
 
     /**
+     * 接口中文名，如：获取会员个人信息
+     */
+    String name();
+
+    /**
      * 版本号，默认版本号是""<br>
      *     改默认版本号：<code>ServiceConfig.getInstance().setDefaultVersion("1.0");</code>
      */

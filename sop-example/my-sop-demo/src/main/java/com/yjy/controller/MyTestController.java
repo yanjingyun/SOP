@@ -38,7 +38,7 @@ public class MyTestController {
 
     // 基础用法
     @ApiOperation(value = "我的信息", notes = "获取我的详细信息")
-    @Open(value = "mydemo.get", bizCode = {
+    @Open(value = "mydemo.get", name = "获取我的详细信息", bizCode = {
             // 定义业务错误码，用于文档显示
             @BizCode(code = "100001", msg = "姓名错误", solution = "填写正确的姓名"),
             @BizCode(code = "100002", msg = "备注错误", solution = "填写正确备注"),
