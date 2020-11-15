@@ -25,7 +25,7 @@ import java.io.IOException;
 public class Example1003_DownloadController {
 
     @ApiOperation(value = "文件下载", notes = "演示文件下载")
-    @Open("file.download")
+    @Open(value = "file.download", name = "临时名称")
     @RequestMapping(value = "file1", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE/* 这个一定要加，不然沙箱文档不起作用 */)
     public ResponseEntity<byte[]> download(StoryParam param) throws IOException {
 

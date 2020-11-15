@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Example1005_ThrowExceptionController {
 
-    @Open("goods.update")
+    @Open(value = "goods.update", name = "临时名称")
     @RequestMapping("ex")
     public Object updateGoods(GoodsUpdateParam param) {
         // 方式1

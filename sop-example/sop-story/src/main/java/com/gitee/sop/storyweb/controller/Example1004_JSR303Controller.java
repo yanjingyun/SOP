@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 public class Example1004_JSR303Controller {
 
-    @Open("goods.add")
+    @Open(value = "goods.add", name = "临时名称")
     @RequestMapping("jsr303")
     public Object addGoods(GoodsParam param, HttpServletRequest request) {
         System.out.println(request.getParameter("method"));

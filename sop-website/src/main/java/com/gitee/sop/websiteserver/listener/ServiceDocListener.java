@@ -1,7 +1,6 @@
 package com.gitee.sop.websiteserver.listener;
 
 import com.gitee.sop.gatewaycommon.bean.InstanceDefinition;
-import com.gitee.sop.gatewaycommon.bean.SopConstants;
 import com.gitee.sop.gatewaycommon.route.BaseServiceListener;
 import com.gitee.sop.websiteserver.manager.DocManager;
 import lombok.extern.slf4j.Slf4j;
@@ -40,7 +39,7 @@ public class ServiceDocListener extends BaseServiceListener {
                             , instance.getIp() + ":" + instance.getPort())
             );
         } else {
-            log.error("加载文档失败, status:{}, body:{}", responseEntity.getStatusCodeValue(), responseEntity.getBody());
+            log.error("加载文档失败, url={}, status:{}, body:{}", url, responseEntity.getStatusCodeValue(), responseEntity.getBody());
         }
     }
 

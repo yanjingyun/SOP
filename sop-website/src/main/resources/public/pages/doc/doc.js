@@ -27,6 +27,7 @@ layui.config({
                 html.push('<option value="' + title + '" ' + selected + '>' + title + '</option>');
             }
             $('#moduleList').html(html.join(''));
+            $('.url-test').text(baseInfo.urlTest);
             $('.url-prod').text(baseInfo.urlProd);
             $('.url-sandbox').text(baseInfo.urlSandbox);
             form.render('select');

@@ -37,7 +37,7 @@ public class Example1002_FileUploadController {
      * @return
      */
     @ApiOperation(value = "文件上传例1", notes = "上传文件demo")
-    @Open("file.upload")
+    @Open(value = "file.upload", name = "临时名称")
     @RequestMapping("file1")
     public FileUploadResult file1(FileUploadParam param) {
         // 获取上传的文件
@@ -63,7 +63,7 @@ public class Example1002_FileUploadController {
     @ApiOperation(value = "文件上传例2", notes = "可上传多个文件"
             // 多文件上传、不确定文件数量上传，必须申明下面这句，否则沙盒界面不会出现上传控件
             , extensions = @Extension(properties = @ExtensionProperty(name = "multiple", value = "multiple")))
-    @Open("file.upload2")
+    @Open(value = "file.upload2", name = "临时名称")
     @RequestMapping("file2")
     public FileUploadResult file2(FileUploadParam2 param, HttpServletRequest request) {
         System.out.println(param.getRemark());
@@ -77,7 +77,7 @@ public class Example1002_FileUploadController {
         return result;
     }
 
-    @Open("file.upload3")
+    @Open(value = "file.upload3", name = "临时名称")
     @RequestMapping("file3")
     public FileUploadResult file3(FileUploadParam2 param, HttpServletRequest request) {
         System.out.println(param.getRemark());

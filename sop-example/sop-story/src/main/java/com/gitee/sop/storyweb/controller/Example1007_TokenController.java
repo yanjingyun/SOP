@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 public class Example1007_TokenController {
 
     @ApiOperation(value="传递token", notes = "传递token")
-    @Open(value = "story.get.token", needToken = true/* 设置true，网关会校验token是否存在 */)
+    @Open(value = "story.get.token", name = "临时名称", needToken = true/* 设置true，网关会校验token是否存在 */)
     @RequestMapping("token")
     public StoryResult token(StoryParam story, HttpServletRequest request) {
         OpenContext openContext = ServiceContext.getCurrentContext().getOpenContext();

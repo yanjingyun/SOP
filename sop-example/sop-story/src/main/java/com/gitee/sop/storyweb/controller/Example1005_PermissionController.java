@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Example1005_PermissionController {
 
-    @Open(value = "story.get.permission", permission = true)
+    @Open(value = "story.get.permission", name = "临时名称", permission = true)
     @RequestMapping("perm/get")
     public StoryResult getStory() {
         StoryResult story = new StoryResult();

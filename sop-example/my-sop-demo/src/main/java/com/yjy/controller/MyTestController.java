@@ -3,6 +3,8 @@ package com.yjy.controller;
 import com.alibaba.fastjson.JSON;
 import com.gitee.sop.servercommon.annotation.BizCode;
 import com.gitee.sop.servercommon.annotation.Open;
+import com.yjy.controller.request.BaseRequest;
+import com.yjy.controller.request.Test2Request;
 import com.yjy.vo.MyParam;
 import com.yjy.vo.MyVo;
 import io.swagger.annotations.Api;
@@ -51,5 +53,14 @@ public class MyTestController {
         story.setName("海底小纵队(mydemo.get1.0), " + "param:" + JSON.toJSONString(param) + ", port:" + port);
         story.setAge(32);
         return story;
+    }
+
+    @PostMapping("/get/test2")
+    @ApiOperation(value = "我的信息", notes = "获取我的详细信息")
+    @Open(value = "mydemo.test2", name = "测试泛型参数")
+    public BaseRequest<Test2Request> test2(@RequestBody BaseRequest<Test2Request> request) {
+        request.getData().setAa1("xxxxxxxxxxxxx");
+        System.out.println(request.getData().getAa1());
+        return request;
     }
 }

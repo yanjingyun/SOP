@@ -66,7 +66,7 @@ public class Example1001_BaseController {
 
     // 基础用法
     @ApiOperation(value = "获取故事信息（首位）", notes = "获取故事信息的详细信息", position = -100/* position默认0，值越小越靠前 */)
-    @Open(value = "story.get", bizCode = {
+    @Open(value = "story.get", name = "获取故事信息（首位）", bizCode = {
             // 定义业务错误码，用于文档显示
             @BizCode(code = "100001", msg = "姓名错误", solution = "填写正确的姓名"),
             @BizCode(code = "100002", msg = "备注错误", solution = "填写正确备注"),
@@ -81,7 +81,7 @@ public class Example1001_BaseController {
 
     // 指定版本号
     @ApiOperation(value = "获取故事信息", notes = "获取故事信息的详细信息")
-    @Open(value = "story.get", version = "2.0", bizCode = {
+    @Open(value = "story.get", name="获取故事信息", version = "2.0", bizCode = {
             // 定义业务错误码，用于文档显示
             @BizCode(code = "100001", msg = "姓名错误", solution = "填写正确的姓名"),
             @BizCode(code = "100002", msg = "备注错误", solution = "填写正确备注"),
@@ -94,7 +94,7 @@ public class Example1001_BaseController {
         return story;
     }
 
-    @Open(value = "story.system.param.get")
+    @Open(value = "story.system.param.get", name = "系统参数")
     @GetMapping("/get/system/param/v1")
     public StoryResult systemParam(StoryParam param) {
         StoryResult result = new StoryResult();
@@ -107,7 +107,7 @@ public class Example1001_BaseController {
     }
 
     // 参数绑定，少量参数可以这样写，参数多了建议放进类里面
-    @Open(value = "story.oneparam")
+    @Open(value = "story.oneparam", name = "参数绑定V1")
     @GetMapping("/oneParam/v1")
     public StoryResult oneParam(@NotBlank(message = "id不能为空") String id, @NotBlank(message = "name不能为空")  String name) {
         StoryResult result = new StoryResult();
@@ -116,7 +116,7 @@ public class Example1001_BaseController {
     }
 
     // 参数绑定
-    @Open(value = "story.oneparam", version = "1.1")
+    @Open(value = "story.oneparam", version = "1.1", name = "参数绑定V2")
     @GetMapping("/oneParam/v2")
     public StoryResult oneParamV2(
             @NotNull(message = "id不能为空")
@@ -127,7 +127,7 @@ public class Example1001_BaseController {
     }
 
     // 参数绑定，枚举
-    @Open(value = "story.oneparam", version = "1.2")
+    @Open(value = "story.oneparam", version = "1.2", name = "参数绑定，枚举")
     @GetMapping("/oneParam/v3")
     public StoryResult oneParamV2(@NotNull(message = "typeEnum不能为空") TypeEnum typeEnum) {
         StoryResult result = new StoryResult();
@@ -136,7 +136,7 @@ public class Example1001_BaseController {
     }
 
     // 参数绑定
-    @Open(value = "story.param.bind", mergeResult = false)
+    @Open(value = "story.param.bind", name = "参数绑定", mergeResult = false)
     @RequestMapping("/get/param/v1")
     public StoryResult param(int id, String name) {
         StoryResult result = new StoryResult();
@@ -146,7 +146,7 @@ public class Example1001_BaseController {
 
     // 忽略验证
     @ApiOperation(value = "忽略签名验证", notes = "忽略签名验证")
-    @Open(value = "story.get.ignore", ignoreValidate = true)
+    @Open(value = "story.get.ignore", name ="忽略签名验证", ignoreValidate = true)
     @PostMapping(value = "/get/ignore/v1")
     public StoryResult getStory21(@RequestBody StoryParam story) {
         StoryResult result = new StoryResult();
@@ -155,7 +155,7 @@ public class Example1001_BaseController {
         return result;
     }
 
-    @Open(value = "story.get.large")
+    @Open(value = "story.get.large", name = "临时名称")
     @RequestMapping("/get/large/v1")
     public StoryResult getStoryLarge(LargeTextParam param) {
         StoryResult result = new StoryResult();
@@ -165,7 +165,7 @@ public class Example1001_BaseController {
     }
 
     // 绑定复杂对象
-    @Open(value = "sdt.get",version = "4.0")
+    @Open(value = "sdt.get", name = "绑定复杂对象", version = "4.0")
     @RequestMapping("/get/v4")
     public TestResult getV4(@RequestBody TestResult testResult) {
         if(StringUtils.isEmpty(testResult.getType())) {
@@ -175,7 +175,7 @@ public class Example1001_BaseController {
     }
 
     // 获取header
-    @Open(value = "test.head",version = "1.0")
+    @Open(value = "test.head", name = "临时名称", version = "1.0")
     @GetMapping("/get/header/v1")
     public StoryResult header(@RequestBody StoryParam story, HttpServletRequest request) {
         HttpServletRequest servletRequest = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
@@ -189,7 +189,7 @@ public class Example1001_BaseController {
 
     // 返回数组结果
     @ApiOperation(value = "返回数组结果（第二）", notes = "返回数组结果", position = -99)
-    @Open("story.list")
+    @Open(value = "story.list", name = "临时名称")
     @RequestMapping("/list/v1")
     public List<StoryResult> getStory3(StoryParam story) {
         int index = 0;
@@ -208,7 +208,7 @@ public class Example1001_BaseController {
 
     // 演示文档表格树
     @ApiOperation(value = "获取分类信息", notes = "演示表格树")
-    @Open("category.get")
+    @Open(value = "category.get", name = "临时名称")
     @PostMapping("/category/get/v1")
     public CategoryResult getCategory(CategoryParam param) {
         System.out.println(param);
@@ -224,7 +224,7 @@ public class Example1001_BaseController {
 
     // 演示文档页树状返回
     @ApiOperation(value = "树状返回", notes = "树状返回")
-    @Open("story.tree.get")
+    @Open(value = "story.tree.get", name = "临时名称")
     @PostMapping("/tree/v1")
     public TreeResult tree(StoryParam param) {
         int id = 0;
@@ -250,7 +250,7 @@ public class Example1001_BaseController {
 
     private static String json = "{\"flightDate\":\"2020-09-01\",\"flightNo\":\"HO1705\",\"departureAirport\":\"ZSCN\",\"arrivalAirport\":\"ZPLJ\",\"ycy\":\"11521\",\"lcy\":\"4354\",\"cr\":\"145\",\"et\":\"1\",\"ye\":\"0\",\"td\":\"0\",\"gw\":\"0\",\"ew\":\"146\",\"xl\":\"1018\",\"yj\":\"0\",\"hw\":\"635\"}";
     // 返回大数据
-    @Open(value = "bigdata.get")
+    @Open(value = "bigdata.get", name = "临时名称")
     @RequestMapping("/bigdata/v1")
     public Map<String, Object> bigData(StoryParam param) {
         int len = 2000;

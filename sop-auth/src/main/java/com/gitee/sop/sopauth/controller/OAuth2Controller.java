@@ -73,7 +73,7 @@ public class OAuth2Controller {
      * @param param
      * @return
      */
-    @Open("open.auth.token.app")
+    @Open(value = "open.auth.token.app", name = "临时名称")
     @RequestMapping("fetchToken")
     @ResponseBody
     public FetchTokenResult fetchToken(FetchTokenParam param) {
