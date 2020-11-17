@@ -25,6 +25,7 @@ public class MyRouteInterceptor implements RouteInterceptor {
     @Override
     public void afterRoute(RouteInterceptorContext context) {
         ServiceInstance serviceInstance = context.getServiceInstance();
+        log.info("请求参数：{}", context.getApiParam());
         log.info("请求成功，serviceId:{}({}:{})，微服务返回结果：{}",
                 serviceInstance.getServiceId(),
                 serviceInstance.getHost(),serviceInstance.getPort(),

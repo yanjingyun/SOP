@@ -36,7 +36,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.Writer;
+import java.lang.reflect.Field;
 import java.lang.reflect.Parameter;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.security.Principal;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -206,6 +209,23 @@ public class ApiArgumentResolver implements SopHandlerMethodArgumentResolver {
         // 如果是json字符串
         if (JSONValidator.from(bizContent).validate()) {
             param = JSON.parseObject(bizContent, parameterType);
+
+            // 获取泛型参数类，如BaseRequest<Test2Request>中，有个泛型参数data，详情查看com.yjy.controller.MyTestController.test2
+            try {
+                Field field = parameterType.getDeclaredField("data");
+                if (field != null) {
+                    Type genericParameterType = methodParameter.getGenericParameterType();
+                    ParameterizedType parameterizedType = (ParameterizedType) genericParameterType;
+                    Type dataClass = parameterizedType.getActualTypeArguments()[0];
+                    JSONObject pa = JSONObject.parseObject(bizContent);
+                    Object obj = JSON.parseObject(pa.getString("data"), dataClass);
+
+                    ReflectionUtils.makeAccessible(field);
+                    ReflectionUtils.setField(field, param, obj);
+                }
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            }
         } else {
             // 否则认为是 aa=1&bb=33 形式
             Map<String, Object> query = OpenUtil.parseQueryToMap(bizContent);
