@@ -1,7 +1,7 @@
-package com.gitee.sop.test;
+package com.yjy.test;
 
 import com.alibaba.fastjson.JSON;
-import junit.framework.TestCase;
+import com.gitee.sop.test.HttpTool;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,10 +10,7 @@ import java.net.URLEncoder;
 import java.util.Collections;
 import java.util.Map;
 
-/**
- * @author tanghc
- */
-public class TestBase extends TestCase {
+public class BaseTest {
 
     static HttpTool httpTool = new HttpTool();
 
@@ -89,5 +86,4 @@ public class TestBase extends TestCase {
         }
         return sb.toString().substring(1);
     }
-
 }

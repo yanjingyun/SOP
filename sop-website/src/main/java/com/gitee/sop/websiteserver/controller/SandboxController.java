@@ -91,10 +91,9 @@ public class SandboxController {
         params.put("biz_content", bizContent);
 
         SandboxResult result = new SandboxResult();
+        result.params = buildParamQuery(params); // 请求参数
 
-        result.params = buildParamQuery(params);
-
-        String content = AlipaySignature.getSignContent(params);
+        String content = AlipaySignature.getSignContent(params); //获取签名字符串（请求参数排序后）
         result.beforeSign = content;
 
         String sign = null;
@@ -104,7 +103,6 @@ public class SandboxController {
             throw new RuntimeException("构建签名失败");
         }
         result.sign = sign;
-
         params.put("sign", sign);
 
         Collection<MultipartFile> uploadFiles = UploadUtil.getUploadFiles(request);

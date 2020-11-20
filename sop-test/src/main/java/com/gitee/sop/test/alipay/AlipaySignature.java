@@ -40,17 +40,17 @@ public class AlipaySignature {
 
     /**
      * 
-     * @param sortedParams
+     * @param params 未排序
      * @return
      */
-    public static String getSignContent(Map<String, String> sortedParams) {
+    public static String getSignContent(Map<String, String> params) {
         StringBuffer content = new StringBuffer();
-        List<String> keys = new ArrayList<String>(sortedParams.keySet());
-        Collections.sort(keys);
+        List<String> keys = new ArrayList<String>(params.keySet());
+        Collections.sort(keys); // 所有key进行排序
         int index = 0;
         for (int i = 0; i < keys.size(); i++) {
             String key = keys.get(i);
-            String value = sortedParams.get(key);
+            String value = params.get(key);
             if (StringUtils.areNotEmpty(key, value)) {
                 content.append((index == 0 ? "" : "&") + key + "=" + value);
                 index++;

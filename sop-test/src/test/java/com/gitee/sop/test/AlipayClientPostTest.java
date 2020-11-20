@@ -50,8 +50,9 @@ public class AlipayClientPostTest extends TestBase {
         Map<String, Object> bizContent = new HashMap<>();
         bizContent.put("id", "1");
         bizContent.put("name", "葫芦娃");
-
         params.put("biz_content", JSON.toJSONString(bizContent));
+
+        // 签名
         String content = AlipaySignature.getSignContent(params);
         String sign = AlipaySignature.rsa256Sign(content, privateKey, "utf-8");
         params.put("sign", sign);
