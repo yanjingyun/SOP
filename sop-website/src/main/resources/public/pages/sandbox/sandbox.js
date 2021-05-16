@@ -53,6 +53,7 @@ function buildHttpMethodOptions(docItem) {
 
 function createRequestParameter(docItem) {
     var data = buildTreeData(docItem.requestParameters);
+    console.log(data)
     createTreeTable('treeTableReq', data);
 }
 
@@ -86,7 +87,7 @@ function createTreeTable(id, data) {
         data: data,
         page: false,
         firstTemplet: function (row) {
-            var required = row.required ? '<span style="color: red;">*</span> ' : '';
+            var required = row.required ? '<span style="color: #ff0000;">*</span> ' : '';
             return required + row.name;
         },
         cols: [[
@@ -104,6 +105,8 @@ function createTreeTable(id, data) {
                         , requiredTxt
                         , 'module="'+module+'"'
                     ];
+                    console.log(">>>>>>>>>>>")
+                    console.log(row)
 
                     return !row.refs ? '<input ' + attrs.join(' ') + '/>' : '';
                 }}

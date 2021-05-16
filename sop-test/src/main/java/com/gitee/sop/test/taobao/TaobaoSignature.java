@@ -17,7 +17,6 @@ import java.util.Map;
  */
 public class TaobaoSignature {
 
-
     public static String signTopRequest(Map<String, String> params, String secret, String signMethod) throws IOException {
         String content = getSignContent(params);
         return doSign(content, secret, signMethod);

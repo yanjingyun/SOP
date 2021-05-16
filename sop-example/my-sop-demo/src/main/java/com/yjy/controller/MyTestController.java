@@ -1,21 +1,14 @@
 package com.yjy.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.gitee.sop.servercommon.annotation.BizCode;
 import com.gitee.sop.servercommon.annotation.Open;
 import com.yjy.controller.request.BaseRequest;
 import com.yjy.controller.request.Test2Request;
-import com.yjy.vo.MyParam;
 import com.yjy.vo.MyVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 签名验证通过后，到达这里进行具体的业务处理。
@@ -60,7 +53,16 @@ public class MyTestController {
     @PostMapping("/get/test2")
     @ApiOperation(value = "测试泛型参数", notes = "测试泛型参数")
     @Open(value = "mydemo.test2", name = "测试泛型参数")
-    public BaseRequest<Test2Request> test2(BaseRequest<Test2Request> request) {
+    public BaseRequest<Test2Request> test2(@RequestBody BaseRequest<Test2Request> request) {
+        System.out.println("xxxaaaaaaa>>>");
+        request.getData().setAa1("报错行");
+        return request;
+    }
+
+    @PostMapping("/get/test22")
+    @ApiOperation(value = "测试泛型参数", notes = "测试泛型参数")
+    @Open(value = "mydemo.test2", name = "测试泛型参数")
+    public BaseRequest<Test2Request> test22(@RequestBody BaseRequest<Test2Request> request) {
         System.out.println("xxxaaaaaaa>>>");
         request.getData().setAa1("报错行");
         return request;
